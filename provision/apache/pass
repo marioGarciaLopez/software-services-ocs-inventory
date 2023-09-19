@@ -1,0 +1,3 @@
+#!/bin/sh 
+echo "strongPas5w0rd" 
+sudo chmod +x /usr/share/apache2/pass
