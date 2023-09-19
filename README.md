@@ -48,7 +48,8 @@ Once registered access the menu: configuration->users, select user admin and cha
 
 # Agent Package Creation   
 - Execute the windows packager program (ocsPackager.exe) and fill the following information:   
-![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/9628d506-0524-4249-abe3-7ba494fe1f6c)     
+![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/9628d506-0524-4249-abe3-7ba494fe1f6c)
+ 
 Agent Setup File: Select the exe file of the agent. (Mind to remove the filter name in the popup selection window)
 Certificate file: Select file 'cacert.pem' in the 'provision' folder of this repository.   
 Command line options: /S /NOW /SERVER=https://<IP VM>/ocsinventory /SSL=1 /NOSPLASH /NO_SYSTRAY   
@@ -63,6 +64,7 @@ Command line options: /S /NOW /SERVER=https://<IP VM>/ocsinventory /SSL=1 /NOSPL
 Press 'next' button and select output file folder in the next one. Press OK again in the next window and wait for the file to be generated.   
 
 Once the file is generated it can be executed in the different PCs and servers. The installation is silent, when it's finished a new service would be found in the Operative System:   
+
 ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/dbf4e62f-b182-4a2f-9752-d5cb33cc8c97)   
 
 # Final Steps   
