@@ -48,10 +48,11 @@ Once registered access the menu: configuration->users, select user admin and cha
 
 # Agent Package Creation   
 - Execute the windows packager program (ocsPackager.exe) and fill the following information:   
-![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/9628d506-0524-4249-abe3-7ba494fe1f6c)   
+![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/9628d506-0524-4249-abe3-7ba494fe1f6c)     
 Agent Setup File: Select the exe file of the agent. (Mind to remove the filter name in the popup selection window)
-Certificate file: Select file 'cacert.pem' in the 'provision' folder of this repository.
-Command line options: /S /NOW /SERVER=https://ocsng.domain.local/ocsinventory /SSL=1 /NOSPLASH /NO_SYSTRAY
+Certificate file: Select file 'cacert.pem' in the 'provision' folder of this repository.   
+Command line options: /S /NOW /SERVER=https://<IP VM>/ocsinventory /SSL=1 /NOSPLASH /NO_SYSTRAY   
+(Be aware <IP VM> should be change for the VM IP)    
 /S – Silent   
 /NOW – Run Inventory immediately after installation   
 /SERVER=https://ocsng.domain.local/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
