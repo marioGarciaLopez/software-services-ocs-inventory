@@ -16,9 +16,9 @@ In order to complete the installation guide, the following programs must be down
  - Install the OCS-Agent by unzipping the downloaded file to a local directory.
  - Unzip the Microsoft tools PSTools to a local directory.
  - Unzip the windows packager to a local directory and execute the exe file. In the popup isntallation window, indicate the local directory where PSTools has been unzipped previously. After the initial configuration, close the windows packager.
- - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision', a file named 'vagrantfile' and a bat extension file named 'install.bat'.
+ - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision' and a file named 'Vagrantfile'.
+ - Edit Vagrantfile and change the IP for the fixed IP address (Line 42)
  - Execute CMD command or open a windows terminal.
- - Execute the bat extension file and waint until VBox configuration is finished. 
  - Type 'vagrant up' and wait until VBox configuration is finished.
 
 # Execute VM    
