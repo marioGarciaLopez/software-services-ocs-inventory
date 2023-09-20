@@ -58,7 +58,7 @@ Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLAS
 (Be aware <IP_VM> should be change for the VM IP)    
 /S – Silent   
 /NOW – Run Inventory immediately after installation   
-/SERVER=https://ocsng.domain.local/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
+/SERVER=https://IP_VM/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
 /SSL=1 – force using SSL   
 /NOSPLASH – no splash screen at startup   
 /NO_SYSTRAY – no systray – no need to bother users with new icons. Besides, user notification and interaction work perfectly without it
