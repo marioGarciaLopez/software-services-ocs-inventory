@@ -73,6 +73,9 @@ Once the file is generated it can be executed in the different PCs and servers. 
 
 ![services](./img/services.png)   
 
+A simple way of installing the agent to all the connected computers in the network, would be using 'psexec.exe' program from Microsoft:   
+- psexec \\* -s \\ROUTE_TO_PKG_AGENT\OCSPackage.exe     
+
 # Final Optional Steps   
 The process will create a VBox VM ready to be used. The default password for the DataBase connection is 'strongPas5w0rd'. To change this password, execute the following steps:   
 - Enter a terminal in the VM (either entering from VBox or in a windows terminal in the Host machine typing: 'vagrant ssh')
