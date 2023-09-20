@@ -45,7 +45,7 @@ The default credentials are admin/admin
 Once registered access the menu: configuration->users, select user admin and change the default password.   
    
 Enter a terminal window in the VM and remove the default installation file:   
-- rm -f /usr/share/ocsinventory-reports/ocsreports/install.php
+- sudo rm -f /usr/share/ocsinventory-reports/ocsreports/install.php
   
 
 # Agent Package Creation [15 min] 
