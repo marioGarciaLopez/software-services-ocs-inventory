@@ -1,5 +1,5 @@
 # Software-Services-OCS-Inventory
-Repository of descriptive nature for the installation process related to the OCS-Invertary tool in Fertiberia group company. The complete installation process is estimated to last about 1 hour and 10 min.
+Repository of descriptive nature for the installation process related to the OCS-Invertary tool in Fertiberia group company. The complete installation process is estimated to last about 1 hour and 10 min and the knowledge base to execute it is linux basic user OS. 
 # Requirements   
 In order to complete the installation guide, the following programs must be downloaded:     
 - Virtual Box: https://www.virtualbox.org/wiki/Downloads (Select the convenient distribution)
@@ -43,6 +43,10 @@ Once updated click again in 'OCS-NSG GUI' to access the login page:
 ![Login](./img/login.png)     
 The default credentials are admin/admin   
 Once registered access the menu: configuration->users, select user admin and change the default password.   
+   
+Enter a terminal window in the VM and remove the default installation file:   
+- rm -f /usr/share/ocsinventory-reports/ocsreports/install.php
+  
 
 # Agent Package Creation [15 min] 
 - Execute the windows packager program (ocsPackager.exe) and fill the following information:   
