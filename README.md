@@ -85,6 +85,13 @@ This file has a variable 'bind address = 127.0.0.1'. This can be changed for a r
 The VM has a self signed certificate to encript communication to access the OCS-Inventary application; also, all the agents installed with the installed package program created in the guide will encrypt the communication with the repository server with the RSA algorithm using the public-private key generated.  
 The OCS application has a wide echosystem of plugins available to extend functionality. In future updates of this repository, new functionality would be added to include new company policies. 
 
+The official documentation for the application can be found at:  
+- https://wiki.ocsinventory-ng.org/   
+   
+Plugins catalog for the product:   
+- https://plugins.ocsinventory-ng.org/#modal-winupdate
+
+
 
 
 
