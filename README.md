@@ -1,5 +1,5 @@
 # Software-Services-OCS-Inventory
-Repository of descriptive nature for the installation process related to the OCS-Invertary tool in Fertiberia group company.
+Repository of descriptive nature for the installation process related to the OCS-Invertary tool in Fertiberia group company. The complete installation process is estimated to last about 1 hour and 10 min.
 # Requirements   
 In order to complete the installation guide, the following programs must be downloaded:     
 - Virtual Box: https://www.virtualbox.org/wiki/Downloads (Select the convenient distribution)
@@ -19,7 +19,7 @@ In order to complete the installation guide, the following programs must be down
  - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision' and a file named 'Vagrantfile'.
  - Edit Vagrantfile and change the IP for the fixed IP address (Line 42)
  - Execute CMD command or open a windows terminal.
- - Type 'vagrant up' and wait until VBox configuration is finished.
+ - Type 'vagrant up' and wait until VBox configuration is finished.[25 min]
 
 # Execute VM    
 You can execute the VM by either run VBox application and open the VM:
@@ -27,7 +27,7 @@ You can execute the VM by either run VBox application and open the VM:
 Or execute 'vagrant ssh' in a windows command terminal:   
 ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/ca986774-beba-48d0-a806-b8807e900442)   
 
-# First steps   
+# First steps [10 min]
 As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://<VM-IP>/ocsreports. The install initial page will be opened:   
 ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/51d86cd6-9f1b-4261-bf98-c112f1e62ee5)   
 Introduce the data as in the image:  
@@ -46,7 +46,7 @@ Once updated click again in 'OCS-NSG GUI' to access the login page:
 The default credentials are admin/admin   
 Once registered access the menu: configuration->users, select user admin and change the default password.   
 
-# Agent Package Creation   
+# Agent Package Creation [15 min] 
 - Execute the windows packager program (ocsPackager.exe) and fill the following information:   
 ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/9628d506-0524-4249-abe3-7ba494fe1f6c)
  
@@ -67,7 +67,24 @@ Once the file is generated it can be executed in the different PCs and servers. 
 
 ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/dbf4e62f-b182-4a2f-9752-d5cb33cc8c97)   
 
-# Final Steps   
+# Final Optional Steps   
+The process will create a VBox VM ready to be used. The default password for the DataBase connection is 'strongPas5w0rd'. To change this password, execute the following steps:   
+- Enter a terminal in the VM (either entering from VBox or in a windows terminal in the Host machine typing: 'vagrant ssh')
+- Execute a sql command to change the password for the user:
+     sudo mysql -u vagrant -p'vagrant' -e "ALTER USER 'ocs' IDENTIFIED BY 'newpassword';"   
+- Execute the following lines to change the password configuration for the OCS application files:
+     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/z-ocsinventory-server.conf
+     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/zz-ocsinventory-restapi.conf
+
+Another consideration to take into account is the DB configuration. Currently, for security reasons, the DDBB can only be access from the VM localhost. This can be changed in the following configuration file: 
+- /etc/mysql/mariadb.conf.d/50-server.cnf
+This file has a variable 'bind address = 127.0.0.1'. This can be changed for a range ip, so the DDBB would be accessed from any other machine from the network, for ex:
+- sudo sed -i 's/127.0.0.1/192.168.56.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+
+# Conclusion   
+The VM has a self signed certificate to encript communication to access the OCS-Inventary application; also, all the agents installed with the installed package program created in the guide will encrypt the communication with the repository server with the RSA algorithm using the public-private key generated.  
+The OCS application has a wide echosystem of plugins available to extend functionality. In future updates of this repository, new functionality would be added to include new company policies. 
 
 
 
