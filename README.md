@@ -66,7 +66,8 @@ Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLAS
 /NO_SYSTRAY – no systray – no need to bother users with new icons. Besides, user notification and interaction work perfectly without it
 
 Tag: It's important to add the location as tag for the agent. In the image example, Madrid is the tag value to be informed.    
-Press 'next' button and select output file folder in the next one. Press OK again in the next window and wait for the file to be generated.   
+Press 'next' button and select output file folder and name in the next one. In this example the agent installer name is: OCSPackage.exe.   
+Press OK again in the next window and wait for the file to be generated.   
 
 Once the file is generated it can be executed in the different PCs and servers. The installation is silent, when it's finished a new service would be found in the Services window of the SO:   
 
@@ -77,9 +78,9 @@ The process will create a VBox VM ready to be used. The default password for the
 - Enter a terminal in the VM (either entering from VBox or in a windows terminal in the Host machine typing: 'vagrant ssh')
 - Execute a sql command to change the password for the user:
      sudo mysql -u vagrant -p'vagrant' -e "ALTER USER 'ocs' IDENTIFIED BY 'newpassword';"   
-- Execute the following lines to change the password configuration for the OCS application files:
-     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/z-ocsinventory-server.conf
-     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/zz-ocsinventory-restapi.conf
+- Execute the following lines to change the password configuration for the OCS application files:   
+     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/z-ocsinventory-server.conf   
+     sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/zz-ocsinventory-restapi.conf   
 
 Another consideration to take into account is the DB configuration. Currently, for security reasons, the DDBB can only be access from the VM localhost. This can be changed in the following configuration file: 
 - /etc/mysql/mariadb.conf.d/50-server.cnf
