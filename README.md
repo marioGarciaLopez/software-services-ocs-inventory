@@ -23,9 +23,9 @@ In order to complete the installation guide, the following programs must be down
 
 # Execute VM    
 You can execute the VM by either run VBox application and open the VM:
-   ![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/fc739067-646d-4007-a436-537eb17c94ad)      
+   ![VM-VBox](./git/img/VBBox-access.png)      
 Or execute 'vagrant ssh' in a windows command terminal:   
-![image](https://github.com/marioGarciaLopez/software-services-ocs-inventory/assets/143705941/ca986774-beba-48d0-a806-b8807e900442)   
+ ![vagrant-ssh](./git/img/vagrant-ssh.png)      
 
 # First steps [10 min]
 As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://<VM-IP>/ocsreports. The install initial page will be opened:   
