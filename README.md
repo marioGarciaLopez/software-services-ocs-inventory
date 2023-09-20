@@ -30,7 +30,7 @@ Or execute 'vagrant ssh' in a windows command terminal:
  
 
 # First steps [10 min]
-As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://<VM-IP>/ocsreports. The install initial page will be opened:   
+As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://VM-IP/ocsreports. The install initial page will be opened:   
 ![VInstall](./img/install-ocs.png)  
 Introduce the data as in the image:  
 - MySQL login: ocs
