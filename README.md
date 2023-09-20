@@ -30,7 +30,7 @@ Or execute 'vagrant ssh' in a windows command terminal:
  
 
 # First steps [10 min]
-As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://<VM-IP>/ocsreports. The install initial page will be opened:   
+As first thing to do, a navigator window should be opened in the HOST machine (not the VM) and access the address: https://VM-IP/ocsreports. The install initial page will be opened:   
 ![VInstall](./img/install-ocs.png)  
 Introduce the data as in the image:  
 - MySQL login: ocs
@@ -45,7 +45,7 @@ The default credentials are admin/admin
 Once registered access the menu: configuration->users, select user admin and change the default password.   
    
 Enter a terminal window in the VM and remove the default installation file:   
-- rm -f /usr/share/ocsinventory-reports/ocsreports/install.php
+- sudo rm -f /usr/share/ocsinventory-reports/ocsreports/install.php
   
 
 # Agent Package Creation [15 min] 
@@ -58,7 +58,7 @@ Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLAS
 (Be aware <IP_VM> should be change for the VM IP)    
 /S – Silent   
 /NOW – Run Inventory immediately after installation   
-/SERVER=https://ocsng.domain.local/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
+/SERVER=https://IP_VM/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
 /SSL=1 – force using SSL   
 /NOSPLASH – no splash screen at startup   
 /NO_SYSTRAY – no systray – no need to bother users with new icons. Besides, user notification and interaction work perfectly without it
