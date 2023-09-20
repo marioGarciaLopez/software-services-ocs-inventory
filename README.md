@@ -87,6 +87,9 @@ Another consideration to take into account is the DB configuration. Currently, f
 This file has a variable 'bind address = 127.0.0.1'. This can be changed for a range ip, so the DDBB would be accessed from any other machine from the network, for ex:
 - sudo sed -i 's/127.0.0.1/192.168.56.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 
+# Additional Policies and Scripts   
+Depending of the configuration of the active directory, a group policy could be configured and added a control script for the init session event. This script is under the folder 'policy' and is written to check whether the agent is active or not. In case is not active, the script will init the service. In case is not installed, the script will install the agent, which should be located in a reachable network location. This script can be parametrized changing the value of the variables: 'agentName' (with the name of the agent exe file generated with the package tool) and 'programRoute' (with the reachable network location where the agent exe file would be located).   
+Please, check whether the Active Directory configuration of the network is suitable for this scenario or not. If users cannot have any permission related to the local services, it won't be a good idea. Also check if it would be necessary only for specific groups in the network, according to the local policies.   
 
 # Conclusion   
 The VM has a self signed certificate to encript communication to access the OCS-Inventary application; also, all the agents installed with the installed package program created in the guide will encrypt the communication with the repository server with the RSA algorithm using the public-private key generated.  
