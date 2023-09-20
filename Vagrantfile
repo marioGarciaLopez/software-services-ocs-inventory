@@ -50,13 +50,13 @@ Vagrant.configure("2") do |config|
 	 sudo rm -rf /zz-ocsinventory-restapi.conf
 	 sudo a2enmod ssl
 	 sudo systemctl restart apache2
-	 sudo mysql -e "CREATE DATABASE ocsweb;"/etc/mysql/mariadb.conf.d/50-server.cnf
+	 sudo mysql -e "CREATE DATABASE ocsweb;"
 	 sudo mysql -u root -p'vagrant' -e "GRANT ALL PRIVILEGES ON ocsweb.* TO ocs IDENTIFIED BY 'strongPas5w0rd';"
-	 sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 	 sudo systemctl restart mysql
 	 
   SHELL
   #config.vm.provision :shell, inline: "sudo apt install -y --no-install-recommends ubuntu-desktop" 
+  #config.vm.provision :shell, inline: "sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf"
   #config.vm.provision :shell, inline: "sudo shutdown -r now"
   #sudo rm -f  /usr/share/ocsinventory-reports/ocsreports/install.php
   
