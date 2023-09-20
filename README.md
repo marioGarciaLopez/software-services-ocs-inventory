@@ -50,8 +50,8 @@ Once registered access the menu: configuration->users, select user admin and cha
  
 Agent Setup File: Select the exe file of the agent. (Mind to remove the filter name in the popup selection window)
 Certificate file: Select file 'cacert.pem' in the 'provision' folder of this repository.   
-Command line options: /S /NOW /SERVER=https://<IP VM>/ocsinventory /SSL=1 /NOSPLASH /NO_SYSTRAY   
-(Be aware <IP VM> should be change for the VM IP)    
+Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLASH /NO_SYSTRAY   
+(Be aware <IP_VM> should be change for the VM IP)    
 /S – Silent   
 /NOW – Run Inventory immediately after installation   
 /SERVER=https://ocsng.domain.local/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
