@@ -9,7 +9,7 @@ In order to complete the installation guide, the following programs must be down
 - OCS-Agent Windows64: https://github.com/OCSInventory-NG/WindowsAgent/releases/download/2.10.1.0/OCS-Windows-Agent-2.10.1.0_x64.zip
 - Windows Packager: https://github.com/OCSInventory-NG/Packager-for-Windows/releases/download/2.8/OCS-Windows-Packager-2.8.zip   
   To be able to execute this program, it is also needed the following Microsoft package: https://download.sysinternals.com/files/PSTools.zip
-- A fixed IP Address for the VM. This is important so the VM is accesible from any agent in the network. The IP shoud be unique and out of the range of the DHCP server.   
+- A fixed IP Address for the VM. This is important so the VM is accesible from any agent on the network. The IP shoud be unique and out of the range of the DHCP server.   
   **Important:** The machine executing Vagrant **must have** virtualization option enabled in the BIOS. 
 
  # Installation Process   
@@ -20,7 +20,7 @@ In order to complete the installation guide, the following programs must be down
  - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision' and a file named 'Vagrantfile'.   
     ![download repo](./img/download-repo.png)   
    
- - Edit Vagrantfile and change the IP for the fixed IP address (Line 42)   
+ - Edit Vagrantfile and change the IP for the fixed IP address (Lines 13 and 42)   
    **Important Note:** This IP should be part of an internal network. Make sure to avoid any conflicts with existing DHCP servers. 
  - Execute CMD command or open a windows terminal.
  - Type 'vagrant up' and wait until VBox configuration is finished.[25 min]
