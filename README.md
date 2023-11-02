@@ -20,8 +20,8 @@ In order to complete the installation guide, the following programs must be down
  - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision' and a file named 'Vagrantfile'.   
     ![download repo](./img/download-repo.png)   
    
- - Edit Vagrantfile and change the IP for the fixed IP address (Lines 13 and 42)   
-   **Important Note:** This IP should be part of an internal network. Make sure to avoid any conflicts with existing DHCP servers. 
+ - Edit Vagrantfile and **change the IP for the fixed IP address (Line 3)**. Instead, an environment variable 'IP' can be defined with the IP value, so this change would not be needed.   
+   **Important Note:** This IP should be part of an internal network. Make sure to avoid any conflicts with existing DHCP servers.  
  - Execute CMD command or open a windows terminal.
  - Type 'vagrant up' and wait until VBox configuration is finished.[25 min]
 
