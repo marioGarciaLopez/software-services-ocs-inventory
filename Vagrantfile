@@ -1,16 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+IP_ADDRESS = ENV["IP"] || "192.168.56.4"
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-22.04"
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.name = "OCS-VM"
 	vb.memory = 1024*2 # Especifica 2 GB de RAM
+	vb.cpus = 1
 	#vb.customize ["createhd", "--filename", "ocshd.vdi", "--size", 20480]
   end
   
   config.vm.network "public_network", bridge: "eth0"
-  config.vm.network "private_network", ip: ENV["IP"] || "192.168.56.4"
+  config.vm.network "private_network", ip: IP_ADDRESS
 
   config.vm.synced_folder "./provision", "/vagrant", disabled: false
   
@@ -24,7 +26,6 @@ Vagrant.configure("2") do |config|
 	 sudo apt install -y php php-zip php-pclzip php-gd php-soap php-curl php-json php-mysql
 	 sudo apt install -y php-{curl,gd,mbstring,xml}
 	 sudo apt -y install perl libcompress-zlib-perl libdbi-perl libsoap-lite-perl libio-compress-perl libapache2-mod-perl2-de
-	 sudo apt install -y libapache-dbi-perl libapache2-mod-perl2 libarchive-zip-perl libdbd-mysql-perl libmojolicious-perl libnet-ip-perl libplack-perl libswitch-perl libxml-simple-perl make
 	 sudo cpan -i XML::Entities
 	 systemctl restart apache2
 	 wget https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/2.12.0/OCSNG_UNIX_SERVER-2.12.0.tar.gz
@@ -39,7 +40,7 @@ Vagrant.configure("2") do |config|
 	 sudo cp -r /vagrant/ocsng.key /etc/ssl/private/ 
 	 sudo cp -r /vagrant/apache/pass /usr/share/apache2/
 	 sudo sh /usr/sbin/update-ca-certificates
-	 export IP="192.168.56.4"
+	 export IP=#{IP_ADDRESS}
 	 envsubst < /etc/apache2/sites-available/000-default.conf > ~/000-default.conf 
 	 sudo cp ~/000-default.conf /etc/apache2/sites-available/000-default.conf
 	 envsubst < /etc/apache2/sites-enabled/000-default.conf > ~/000-default.conf 	 
