@@ -22,6 +22,12 @@ Vagrant.configure("2") do |config|
 	 sudo apt install -y git curl wget gcc net-tools network-manager
 	 sudo apt install -y mariadb-server mariadb-client
      sudo apt install -y apache2
+	 sudo apt-get install -y openssl
+	 CERT_DIR="/vagrant"
+	 echo "the certificate SSL is going to be generated in '${CERT_DIR}' directory"
+	 openssl genrsa -out ${CERT_DIR}/ocsng.key 4096
+	 openssl req -x509 -new -nodes -key ${CERT_DIR}/ocsng.key -sha256 -days 1024 -out ${CERT_DIR}/cacert.pem -subj "/C=ES/ST=Madrid/L=Madrid/O=Fertiberia/CN=#{IP_ADDRESS}"
+	 cp ${CERT_DIR}/cacert.pem ${CERT_DIR}/ocsng.pem
 	 sudo apt install -y libapache-dbi-perl libapache2-mod-perl2 libarchive-zip-perl libdbd-mysql-perl libmojolicious-perl libnet-ip-perl libplack-perl libswitch-perl libxml-simple-perl make
 	 sudo apt install -y php php-zip php-pclzip php-gd php-soap php-curl php-json php-mysql
 	 sudo apt install -y php-{curl,gd,mbstring,xml}
