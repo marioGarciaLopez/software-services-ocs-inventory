@@ -70,13 +70,12 @@ Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLAS
 Tag: It's important to add the location as 'Label' for the agent. In the image example, Madrid is the tag value to be informed.    
 Press 'next' button and select output file folder and name in the next one. In this example, the agent installer name is: 'OCSPackage.exe'.   
 Press OK again in the next window and wait for the file to be generated.   
-**Before executing the agent, the certificate must be configured in the 'C:\ProgramData\OCS Inventory NG\Agent' directory. (The programData directory is by default hidden). For being able to change the directory, open the windos services, locate the agent OCSService and stop it. Once stop, copy the 'cacert.pem' file located in the 'provision' directory in to the 'C:\ProgramData\OCS Inventory NG\Agent' directory**. 
-
-The OCSInventory.log file will describe the agent connection process, feel free to check it anytime. The file 'ocsinventory.ini' describes the configuration of the agent for the communication process. 
 
 Once the file is generated, it can be executed in the different PCs and servers. The installation is silent; when it's finished, a new service would be found in the 'Services' panel of the SO:   
 
 ![services](./img/services.png)   
+
+**The 'C:\ProgramData\OCS Inventory NG\Agent' directory contains relevant files for the agent. The OCSInventory.log file will describe the agent connection process, feel free to check it anytime. The file 'ocsinventory.ini' describes the configuration of the agent for the communication process.**   
 
 A simple way of installing the agent to all the connected computers in the network, would be using 'psexec.exe' program from Microsoft:   
 - psexec \\* -s \\ROUTE_TO_PKG_AGENT\OCSPackage.exe     
