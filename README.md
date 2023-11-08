@@ -9,17 +9,19 @@ In order to complete the installation guide, the following programs must be down
 - OCS-Agent Windows64: https://github.com/OCSInventory-NG/WindowsAgent/releases/download/2.10.1.0/OCS-Windows-Agent-2.10.1.0_x64.zip
 - Windows Packager: https://github.com/OCSInventory-NG/Packager-for-Windows/releases/download/2.8/OCS-Windows-Packager-2.8.zip   
   To be able to execute this program, it is also needed the following Microsoft package: https://download.sysinternals.com/files/PSTools.zip
-- A fixed IP Address for the VM. This is important so the VM is accesible from any agent in the network. The IP shoud be unique and out of the range of the DHCP server. 
+- A fixed IP Address for the VM. This is important so the VM is accesible from any agent on the network. The IP shoud be unique and out of the range of the DHCP server.   
+  **Important:** The machine executing Vagrant **must have** virtualization option enabled in the BIOS. 
 
  # Installation Process   
  - Install Virtual Box and Vagrant programs [about 20 min] using the default wizard options.
  - Install the OCS-Agent by unzipping the downloaded file to a local directory.
  - Unzip the Microsoft tools PSTools to a local directory.
- - Unzip the windows packager to a local directory and execute the exe file. In the popup isntallation window, indicate the local directory where PSTools has been unzipped previously. After the initial configuration, close the windows packager.
+ - Unzip the windows packager to a local directory and execute the exe file. In the popup installation window, indicate the local directory where PSTools has been unzipped previously. After the initial configuration, close the windows packager.
  - Download the content of this repository and unzip it in the user directory [ex: c:\Users\mario.garcia]. There should be a folder named 'provision' and a file named 'Vagrantfile'.   
     ![download repo](./img/download-repo.png)   
    
- - Edit Vagrantfile and change the IP for the fixed IP address (Line 42)
+ - Edit Vagrantfile and change the IP for the fixed IP address (Lines 13 and 42)   
+   **Important Note:** This IP should be part of an internal network. Make sure to avoid any conflicts with existing DHCP servers. 
  - Execute CMD command or open a windows terminal.
  - Type 'vagrant up' and wait until VBox configuration is finished.[25 min]
 
@@ -40,7 +42,7 @@ Introduce the data as in the image:
 - Name of Database: ocsweb
 - MySQL port: 3306
 
-In the next window, click on 'click here to enter OCS-NG GUI'; A notice of upgrading the DDBB will be shown: press upgrade and access the next window.   
+In the next window, click on 'click here to enter OCS-NG GUI'; A notice of upgrading the DB will be shown: press 'upgrade' and access the next window.   
 Once updated click again in 'OCS-NSG GUI' to access the login page:   
 ![Login](./img/login.png)     
 The default credentials are admin/admin   
@@ -63,13 +65,13 @@ Command line options: /S /NOW /SERVER=https://IP_VM/ocsinventory /SSL=1 /NOSPLAS
 /SERVER=https://IP_VM/ocsinventory – address for reporting, mind the suffix – it’s not ocsreports like for web console!   
 /SSL=1 – force using SSL   
 /NOSPLASH – no splash screen at startup   
-/NO_SYSTRAY – no systray – no need to bother users with new icons. Besides, user notification and interaction work perfectly without it
+/NO_SYSTRAY – no systray – no need to bother users with new icons. Besides, user notification and interaction work perfectly without it.
 
-Tag: It's important to add the location as tag for the agent. In the image example, Madrid is the tag value to be informed.    
-Press 'next' button and select output file folder and name in the next one. In this example the agent installer name is: OCSPackage.exe.   
+Tag: It's important to add the location as 'Label' for the agent. In the image example, Madrid is the tag value to be informed.    
+Press 'next' button and select output file folder and name in the next one. In this example, the agent installer name is: 'OCSPackage.exe'.   
 Press OK again in the next window and wait for the file to be generated.   
 
-Once the file is generated it can be executed in the different PCs and servers. The installation is silent, when it's finished a new service would be found in the Services window of the SO:   
+Once the file is generated, it can be executed in the different PCs and servers. The installation is silent; when it's finished, a new service would be found in the 'Services' panel of the SO:   
 
 ![services](./img/services.png)   
 
@@ -85,18 +87,18 @@ The process will create a VBox VM ready to be used. The default password for the
      sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/z-ocsinventory-server.conf   
      sudo sed -i 's/strongPas5w0rd/newpassword/g' /etc/apache2/conf-available/zz-ocsinventory-restapi.conf   
 
-Another consideration to take into account is the DB configuration. Currently, for security reasons, the DDBB can only be access from the VM localhost. This can be changed in the following configuration file: 
+Another consideration to take into account is the DB configuration. Currently, for security reasons, the DDBB can only be accessed from the VM localhost. This case may be changed in the following configuration file: 
 - /etc/mysql/mariadb.conf.d/50-server.cnf
-This file has a variable 'bind address = 127.0.0.1'. This can be changed for a range ip, so the DDBB would be accessed from any other machine from the network, for ex:
+This file has a variable 'bind address = 127.0.0.1' which can be changed for a range IP, so the DB would be accessed from any other machine from the network, for ex:
 - sudo sed -i 's/127.0.0.1/192.168.56.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Additional Policies and Scripts   
-Depending of the configuration of the active directory, a group policy could be configured and added a control script for the init session event. This script is under the folder 'policy' and is written to check whether the agent is active or not. In case is not active, the script will init the service. In case is not installed, the script will install the agent, which should be located in a reachable network location. This script can be parametrized changing the value of the variables: 'agentName' (with the name of the agent exe file generated with the package tool) and 'programRoute' (with the reachable network location where the agent exe file would be located).   
-Please, check whether the Active Directory configuration of the network is suitable for this scenario or not. If users cannot have any permission related to the local services, it won't be a good idea. Also check if it would be necessary only for specific groups in the network, according to the local policies.   
+Depending of the configuration for the active directory, a group policy could be configured and added a control script for the init session event. This script is under the folder 'policy' and is written to check whether the agent is active or not. In case is not active, the script will init the service. In case is not installed, the script will install the agent, which should be stored in a reachable network location. This script can be parametrized changing the value of the variables: 'agentName' (with the name of the agent exe file generated with the package tool) and 'programRoute' (with the reachable network location where the agent exe file would be located).   
+Please, check whether the Active Directory configuration of the network is suitable for this scenario or not. If users cannot have any permission related to the local services, it won't be a good idea. Also, check if it would be necessary only for specific groups in the network, according to the local policies.   
 
 # Conclusion   
-The VM has a self signed certificate to encript communication to access the OCS-Inventary application; also, all the agents installed with the installed package program created in the guide will encrypt the communication with the repository server with the RSA algorithm using the public-private key generated.  
-The OCS application has a wide echosystem of plugins available to extend functionality. In future updates of this repository, new functionality would be added to include new company policies. 
+The VM has a self signed certificate to encript communication for accessing the OCS-Inventary application; also, all the agents installed with the installed package program created in the guide will encrypt the communication towards the repository server with the RSA algorithm using the public-private key generated.  
+The OCS application provides a wide echosystem of plugins available to extend functionality. In future updates of this repository, new functionality would be added to include new company policies. 
 
 The official documentation for the application can be found at:  
 - https://wiki.ocsinventory-ng.org/   
